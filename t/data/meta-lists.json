@@ -1,0 +1,142 @@
+[
+ {
+  "fieldId": "154",
+  "id": "9501",
+  "manageable": "no",
+  "multiple": "no",
+  "name": "Gender",
+  "options": [
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "1",
+    "manageable": "yes",
+    "name": "Male"
+   },
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "2",
+    "manageable": "yes",
+    "name": "Female"
+   }
+  ]
+ },
+ {
+  "fieldId": "9215",
+  "id": "9502",
+  "manageable": "yes",
+  "multiple": "no",
+  "name": "Guest Gender",
+  "options": [
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "1",
+    "manageable": "yes",
+    "name": "Female"
+   },
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "2",
+    "manageable": "yes",
+    "name": "Male"
+   },
+   {
+    "archived": "yes",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "3",
+    "manageable": "yes",
+    "name": "Unspecified"
+   }
+  ]
+ },
+ {
+  "fieldId": "9216",
+  "id": "9503",
+  "manageable": "yes",
+  "multiple": "no",
+  "name": "Guest Relationship",
+  "options": [
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "1",
+    "manageable": "yes",
+    "name": "Child"
+   },
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "2",
+    "manageable": "yes",
+    "name": "Parent"
+   },
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "3",
+    "manageable": "yes",
+    "name": "Friend"
+   },
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "4",
+    "manageable": "yes",
+    "name": "Partner "
+   }
+  ]
+ },
+ {
+  "fieldId": "9201",
+  "id": "9504",
+  "manageable": "yes",
+  "multiple": "no",
+  "name": "Item category",
+  "options": [
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "1",
+    "manageable": "yes",
+    "name": "Laptop"
+   },
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "2",
+    "manageable": "yes",
+    "name": "Phone"
+   },
+   {
+    "archived": "no",
+    "archivedDate": null,
+    "createdDate": "2025-01-01T00:00:00+00:00",
+    "id": "3",
+    "manageable": "yes",
+    "name": "Badge"
+   }
+  ]
+ },
+ {
+  "fieldId": "18",
+  "id": "9505",
+  "manageable": "yes",
+  "multiple": "no",
+  "name": "Location",
+  "options": []
+ }
+]

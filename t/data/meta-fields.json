@@ -1,0 +1,209 @@
+[
+ {
+  "id": 1,
+  "name": "First Name",
+  "type": "text",
+  "alias": "firstName"
+ },
+ {
+  "id": 2,
+  "name": "Last Name",
+  "type": "text",
+  "alias": "lastName"
+ },
+ {
+  "id": 5,
+  "name": "Middle Name",
+  "type": "text",
+  "alias": "middleName"
+ },
+ {
+  "id": 3,
+  "name": "Hire Date",
+  "type": "date",
+  "alias": "hireDate"
+ },
+ {
+  "id": 154,
+  "name": "Gender",
+  "type": "gender",
+  "alias": "gender"
+ },
+ {
+  "id": 17,
+  "name": "Job Title",
+  "type": "list",
+  "alias": "jobTitle"
+ },
+ {
+  "id": 16,
+  "name": "Employment Status",
+  "type": "list",
+  "alias": "employmentHistoryStatus"
+ },
+ {
+  "id": "16.1",
+  "name": "Employment Status - FTE",
+  "type": "list",
+  "alias": "employmentHistoryStatus"
+ },
+ {
+  "id": 9001,
+  "name": "Shirt Size",
+  "type": "list",
+  "alias": "customShirtSize"
+ },
+ {
+  "id": 9002,
+  "name": "Hire Date",
+  "type": "date",
+  "alias": "customHireDate"
+ },
+ {
+  "id": 9003,
+  "name": "Job Title",
+  "type": "text"
+ },
+ {
+  "id": 9004,
+  "name": "# of Items",
+  "type": "int"
+ },
+ {
+  "id": 9005,
+  "name": "Badge Number ",
+  "type": "text",
+  "alias": "customBadgeNumber"
+ },
+ {
+  "id": 9006,
+  "name": "Parking  Zone  Assigned",
+  "type": "text",
+  "alias": "customParkingZoneAssigned"
+ },
+ {
+  "id": 9007,
+  "name": "Notes *optional*",
+  "type": "textarea",
+  "alias": "customNotes*optional*"
+ },
+ {
+  "id": 9008,
+  "name": "Retired Field",
+  "type": "text",
+  "alias": "customRetiredField",
+  "deprecated": true
+ },
+ {
+  "id": 9009,
+  "name": "Anniversary",
+  "type": "date",
+  "alias": "customAnniversary1"
+ },
+ {
+  "id": "9100",
+  "name": "Leave - Policy Assigned",
+  "type": "time_off_type_exists"
+ },
+ {
+  "id": "9100.1",
+  "name": "Leave - Time accrued",
+  "type": "int"
+ },
+ {
+  "id": "9100.6",
+  "name": "Leave - Adjustments (YTD)",
+  "type": "int"
+ },
+ {
+  "id": 9010,
+  "name": "Plan  - Employer pays",
+  "type": "text"
+ },
+ {
+  "id": 9011,
+  "name": "Plan - Employer pays",
+  "type": "text"
+ },
+ {
+  "id": 9201,
+  "name": "Item category",
+  "type": "list"
+ },
+ {
+  "id": 9202,
+  "name": "Item description",
+  "type": "text"
+ },
+ {
+  "id": 9203,
+  "name": "Serial #",
+  "type": "text"
+ },
+ {
+  "id": 9204,
+  "name": "Item cost",
+  "type": "currency"
+ },
+ {
+  "id": 9205,
+  "name": "Date issued",
+  "type": "date"
+ },
+ {
+  "id": 9206,
+  "name": "Comments",
+  "type": "text"
+ },
+ {
+  "id": 9012,
+  "name": "GL Code (New)",
+  "type": "list",
+  "alias": "customGLCode(New)"
+ },
+ {
+  "id": 9207,
+  "name": "Comments",
+  "type": "textarea"
+ },
+ {
+  "id": 9211,
+  "name": "Guest First Name",
+  "type": "text"
+ },
+ {
+  "id": 9212,
+  "name": "Guest Middle Name ",
+  "type": "text"
+ },
+ {
+  "id": 9213,
+  "name": "Guest Last Name",
+  "type": "text"
+ },
+ {
+  "id": 9214,
+  "name": "Guest Birthdate",
+  "type": "date"
+ },
+ {
+  "id": 9215,
+  "name": "Guest Gender",
+  "type": "list"
+ },
+ {
+  "id": 9216,
+  "name": "Guest Relationship",
+  "type": "list"
+ },
+ {
+  "id": 9221,
+  "name": "Effective Date",
+  "type": "date"
+ },
+ {
+  "id": 9222,
+  "name": "Effective Date",
+  "type": "date"
+ }
+]

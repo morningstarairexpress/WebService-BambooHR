@@ -1,0 +1,62 @@
+[
+ {
+  "customItemcategory": "Laptop",
+  "customItemcost": "",
+  "customItemdescription": "Model A",
+  "customComments1": null,
+  "customDateissued": "2025-01-15",
+  "customSerial#": "SN-1",
+  "employeeId": 1,
+  "id": 2435
+ },
+ {
+  "customItemcategory": "Phone",
+  "customItemcost": "",
+  "customItemdescription": "Model C",
+  "customComments1": null,
+  "customDateissued": null,
+  "customSerial#": null,
+  "employeeId": 1,
+  "id": 2514
+ },
+ {
+  "customItemcategory": "Badge",
+  "customItemcost": "",
+  "customItemdescription": "Door",
+  "customComments1": null,
+  "customDateissued": null,
+  "customSerial#": "B-1",
+  "employeeId": 3,
+  "id": 1090
+ },
+ {
+  "customItemcategory": "",
+  "customItemcost": "",
+  "customItemdescription": "",
+  "customComments1": null,
+  "customDateissued": null,
+  "customSerial#": null,
+  "employeeId": 3,
+  "id": 1763
+ },
+ {
+  "customItemcategory": "Laptop",
+  "customItemcost": "",
+  "customItemdescription": "Model B",
+  "customComments1": null,
+  "customDateissued": null,
+  "customSerial#": null,
+  "employeeId": 3,
+  "id": 1935
+ },
+ {
+  "customItemcategory": "Phone",
+  "customItemcost": "",
+  "customItemdescription": "Model D",
+  "customComments1": null,
+  "customDateissued": null,
+  "customSerial#": null,
+  "employeeId": 3,
+  "id": 5456
+ }
+]

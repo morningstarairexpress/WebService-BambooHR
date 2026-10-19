@@ -1,0 +1,72 @@
+[
+ {
+  "customItemcategory": "Laptop",
+  "customItemcost": "",
+  "customItemdescription": "Model A, 16GB",
+  "customComments1": null,
+  "customDateissued": "2025-01-15",
+  "customSerial#": "SN-0001",
+  "employeeId": 111,
+  "id": 812
+ },
+ {
+  "customItemcategory": "Phone",
+  "customItemcost": "",
+  "customItemdescription": "",
+  "customComments1": null,
+  "customDateissued": null,
+  "customSerial#": null,
+  "employeeId": 111,
+  "id": 1669
+ },
+ {
+  "customItemcategory": "",
+  "customItemcost": "",
+  "customItemdescription": null,
+  "customComments1": null,
+  "customDateissued": null,
+  "customSerial#": null,
+  "employeeId": 111,
+  "id": 1841
+ },
+ {
+  "customItemcategory": "Laptop",
+  "customItemcost": "1200.00 USD",
+  "customItemdescription": "Model B",
+  "customComments1": "spare",
+  "customDateissued": "2025-03-01",
+  "customSerial#": "SN-0002",
+  "employeeId": 111,
+  "id": 6975
+ },
+ {
+  "customItemcategory": "Badge",
+  "customItemcost": "",
+  "customItemdescription": "Door badge",
+  "customComments1": null,
+  "customDateissued": "2025-03-02",
+  "customSerial#": "B-77",
+  "employeeId": 111,
+  "id": 6976
+ },
+ {
+  "customItemcategory": "Badge",
+  "customItemcost": "",
+  "customItemdescription": "Garage badge",
+  "customComments1": null,
+  "customDateissued": "2025-03-02",
+  "customSerial#": "B-78",
+  "employeeId": 111,
+  "id": 7153
+ },
+ {
+  "customItemcategory": "Phone",
+  "customItemcost": "300.00 USD",
+  "customItemdescription": "Model C",
+  "customComments1": null,
+  "customDateissued": "2025-04-01",
+  "customSerial#": "SN-0003",
+  "employeeId": 111,
+  "id": 7616
+ }
+]

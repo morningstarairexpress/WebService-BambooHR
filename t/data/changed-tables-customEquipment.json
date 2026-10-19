@@ -1,0 +1,81 @@
+{
+ "employees": {
+  "1": {
+   "lastChanged": "2026-09-30T07:04:13+00:00",
+   "rows": [
+    {
+     "customItemcategory": "Laptop",
+     "customItemcost": null,
+     "customItemdescription": "Model A",
+     "customComments1": null,
+     "customDateissued": null,
+     "customSerial#": null
+    },
+    {
+     "customItemcategory": "Phone",
+     "customItemcost": null,
+     "customItemdescription": "Model C",
+     "customComments1": null,
+     "customDateissued": null,
+     "customSerial#": null
+    }
+   ]
+  },
+  "102": {
+   "lastChanged": "2026-10-01T09:30:00+00:00",
+   "rows": [
+    {
+     "customItemcategory": "",
+     "customItemcost": null,
+     "customItemdescription": "",
+     "customComments1": null,
+     "customDateissued": null,
+     "customSerial#": null
+    }
+   ]
+  },
+  "104": {
+   "lastChanged": "2026-10-02T11:15:42+00:00",
+   "rows": [
+    {
+     "customItemcategory": "Laptop",
+     "customItemcost": null,
+     "customItemdescription": "Model B",
+     "customComments1": null,
+     "customDateissued": null,
+     "customSerial#": null
+    },
+    {
+     "customItemcategory": "Badge",
+     "customItemcost": null,
+     "customItemdescription": "Door",
+     "customComments1": null,
+     "customDateissued": null,
+     "customSerial#": null
+    },
+    {
+     "customItemcategory": "Phone",
+     "customItemcost": null,
+     "customItemdescription": "Model D",
+     "customComments1": null,
+     "customDateissued": null,
+     "customSerial#": null
+    }
+   ]
+  },
+  "106": {
+   "lastChanged": "2026-10-03T14:00:01+00:00",
+   "rows": [
+    {
+     "customItemcategory": "",
+     "customItemcost": null,
+     "customItemdescription": "",
+     "customComments1": null,
+     "customDateissued": null,
+     "customSerial#": null
+    }
+   ]
+  }
+ },
+ "table": "customEquipment"
+}

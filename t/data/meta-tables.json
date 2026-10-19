@@ -1,0 +1,180 @@
+[
+ {
+  "alias": "jobInfo",
+  "fields": [
+   {
+    "id": 9301,
+    "name": "Job Information: Date",
+    "alias": "date",
+    "type": "date"
+   },
+   {
+    "id": 17,
+    "name": "Job Title",
+    "alias": "jobTitle",
+    "type": "list"
+   },
+   {
+    "id": 18,
+    "name": "Location",
+    "alias": "location",
+    "type": "list"
+   }
+  ]
+ },
+ {
+  "alias": "employmentStatus",
+  "fields": [
+   {
+    "id": 9302,
+    "name": "Employment Status: Date",
+    "alias": "date",
+    "type": "date"
+   },
+   {
+    "id": 16,
+    "name": "Employment Status",
+    "alias": "employmentStatus",
+    "type": "list"
+   }
+  ]
+ },
+ {
+  "alias": "customEquipment",
+  "fields": [
+   {
+    "id": 9201,
+    "name": "Item category",
+    "alias": "customItemcategory",
+    "type": "list"
+   },
+   {
+    "id": 9202,
+    "name": "Item description",
+    "alias": "customItemdescription",
+    "type": "text"
+   },
+   {
+    "id": 9203,
+    "name": "Serial #",
+    "alias": "customSerial#",
+    "type": "text"
+   },
+   {
+    "id": 9204,
+    "name": "Item cost",
+    "alias": "customItemcost",
+    "type": "currency"
+   },
+   {
+    "id": 9205,
+    "name": "Date issued",
+    "alias": "customDateissued",
+    "type": "date"
+   },
+   {
+    "id": 9206,
+    "name": "Comments",
+    "alias": "customComments1",
+    "type": "text"
+   }
+  ]
+ },
+ {
+  "alias": "customLoanSchedule",
+  "fields": [
+   {
+    "id": 9221,
+    "name": "Effective Date",
+    "alias": "customEffectiveDate3",
+    "type": "date"
+   },
+   {
+    "id": 9004,
+    "name": "# of Items",
+    "alias": "custom#ofItems",
+    "type": "int"
+   }
+  ]
+ },
+ {
+  "alias": "customRoleChange",
+  "fields": [
+   {
+    "id": 9003,
+    "name": "Job Title",
+    "alias": "customJobTitle",
+    "type": "text"
+   },
+   {
+    "id": 9207,
+    "name": "Comments",
+    "alias": "customComments3",
+    "type": "textarea"
+   }
+  ]
+ },
+ {
+  "alias": "customMid-MonthAdvance",
+  "fields": [
+   {
+    "id": 9222,
+    "name": "Effective Date",
+    "alias": "customEffectiveDate4",
+    "type": "date"
+   }
+  ]
+ },
+ {
+  "alias": "customDriver'sNotes",
+  "fields": [
+   {
+    "id": 9231,
+    "name": "Licence Number",
+    "alias": "customLicenceNumber",
+    "type": "text"
+   }
+  ]
+ },
+ {
+  "alias": "customGuests",
+  "fields": [
+   {
+    "id": 9211,
+    "name": "Guest First Name",
+    "alias": "customGuestFirstName",
+    "type": "text"
+   },
+   {
+    "id": 9212,
+    "name": "Guest Middle Name ",
+    "alias": "customGuestMiddleName",
+    "type": "text"
+   },
+   {
+    "id": 9213,
+    "name": "Guest Last Name",
+    "alias": "customGuestLastName",
+    "type": "text"
+   },
+   {
+    "id": 9214,
+    "name": "Guest Birthdate",
+    "alias": "customGuestBirthdate",
+    "type": "date"
+   },
+   {
+    "id": 9215,
+    "name": "Guest Gender",
+    "alias": "customGuestGender",
+    "type": "list"
+   },
+   {
+    "id": 9216,
+    "name": "Guest Relationship",
+    "alias": "customGuestRelationship",
+    "type": "list"
+   }
+  ]
+ }
+]
