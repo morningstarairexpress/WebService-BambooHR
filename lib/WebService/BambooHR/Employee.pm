@@ -85,6 +85,42 @@ has 'workPhoneExtension' => (is => 'ro');
 has 'workPhonePlusExtension' => (is => 'ro');
 has 'zipcode' => (is => 'ro');
 
+# Custom fields.  Moo ignores unknown constructor keys, so values BambooHR
+# returns for account-specific fields (keyed by field id or alias) would simply
+# vanish.  Keep them in a bag and read them with ->custom(); no accessors are
+# generated at runtime, and nothing here is ever eval'd.
+has 'extra'       => (is => 'ro', default => sub { {} });
+has '_custom_map' => (is => 'ro', default => sub { {} });   # logical name => field id
+
+my %INIT_ARG = map { $_ => 1 } (1360, 1361, 1610);          # declared via init_arg above
+
+around BUILDARGS => sub {
+    my ($orig, $class, @args) = @_;
+    my $args = $class->$orig(@args);
+    my (%known, %extra);
+    foreach my $key (keys %$args) {
+        if ($key eq 'extra' || $key eq '_custom_map' || $INIT_ARG{$key} || $class->can($key)) {
+            $known{$key} = $args->{$key};
+        }
+        else {
+            (my $id = $key) =~ s/^(\d+)\.0$/$1/;   # BambooHR returns e.g. '1610.0' for numeric ids
+            $extra{$id} = $args->{$key};
+        }
+    }
+    $known{extra} = { %{ $known{extra} // {} }, %extra };
+    return \%known;
+};
+
+# $employee->custom('shirt_size')    logical name from custom_fields
+# $employee->custom(9001)            raw field id / alias
+sub custom
+{
+    my ($self, $name) = @_;
+    my $id = $self->_custom_map->{$name} // $name;
+    return $self->$id() if $self->can($id);      # logical name mapped onto a standard field
+    return $self->extra->{$id};
+}
+
 1;
 
 =head1 NAME

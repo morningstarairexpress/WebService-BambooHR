@@ -1,5 +1,19 @@
 Revision history for Perl module WebService::BambooHR
 
+Unreleased
+ - custom_fields: a per-instance mapping of your own names to BambooHR field ids,
+   accepted by employee(), employee_list() and _employee_record(). Employee->custom()
+   reads values whose keys are not standard fields. (The option name comes from
+   ferki's PR #5; the implementation differs: nothing is shared between clients and
+   no code is generated at runtime.)
+ - UserAgent: _request(), _delete() and _post_json() helpers.
+ - Fixed _employee_record(): fields without an alias were written under a stale or
+   empty field id.
+ - New modules for custom tables and metadata: FieldRegistry (labels -> ids and
+   aliases), MappingValidator, TabularData, TableRow, ListOptions, and the
+   exceptions FieldNotFound, TableNotFound, DeprecatedField, AmbiguousField.
+ - See docs/api-notes.md for the API behaviour these modules are built around.
+
 0.07 2016-03-05 NEILB
     - Hopefully made the test for employeeChanges() more resilient to
       changes in the live test data.

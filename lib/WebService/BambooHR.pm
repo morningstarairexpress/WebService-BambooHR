@@ -34,7 +34,7 @@ sub employee_list
     $json =~ s/"1610.0":/"1610":/g;
 
     my $report   = decode_json($json);
-    return map { WebService::BambooHR::Employee->new($_); } @{ $report->{employees} };
+    return map { WebService::BambooHR::Employee->new({ %$_, _custom_map => $self->custom_fields }); } @{ $report->{employees} };
 }
 
 sub employee_directory
@@ -43,7 +43,7 @@ sub employee_directory
     my $response  = $self->_get('employees/directory');
     my $directory = decode_json($response->{content});
 
-    return map { WebService::BambooHR::Employee->new($_); } @{ $directory->{employees} };
+    return map { WebService::BambooHR::Employee->new({ %$_, _custom_map => $self->custom_fields }); } @{ $directory->{employees} };
 }
 
 sub employee_photo
@@ -79,7 +79,7 @@ sub employee
     # Workaround for a bug in BambooHR: if you ask for 'status' you get back 'employeeStatus'
     $json =~ s/"employmentStatus":/"status":/g;
 
-    return WebService::BambooHR::Employee->new(decode_json($json));
+    return WebService::BambooHR::Employee->new({ %{ decode_json($json) }, _custom_map => $self->custom_fields });
 }
 
 sub company_report

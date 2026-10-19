@@ -4,6 +4,7 @@ use 5.006;
 use Moo::Role;
 use HTTP::Tiny;
 use MIME::Base64;
+use JSON::MaybeXS ();
 use WebService::BambooHR::Exception;
 
 my $COMMA = ',';
@@ -29,6 +30,55 @@ has 'company' =>
     (
         is       => 'ro',
     );
+
+# Custom (account-specific) employee fields.  Per instance -- never merged into
+# the file-scoped %field below, so two clients cannot see each other's fields.
+has 'custom_fields' =>
+    (
+        is      => 'ro',
+        default => sub { return {}; },
+        coerce  => sub {
+            my $v = shift;
+            return { map { $_ => $_ } @$v } if ref($v) eq 'ARRAY';
+            return $v // {};
+        },
+    );
+
+sub _request
+{
+    my ($self, $method, $url, $content, $extra_headers) = @_;
+    my $full_url = $self->base_url.'/'.$self->company.'/v1/'.$url;
+    my $auth     = encode_base64($self->api_key.':x', '');
+    my $headers  = { Accept => 'application/json',
+                     'Authorization' => "Basic $auth",
+                     %{ $extra_headers // {} } };
+    my %opts     = (headers => $headers);
+    $opts{content} = $content if defined $content;
+    my $response = $self->ua->request($method, $full_url, \%opts);
+    my @caller   = caller(2);
+    @caller = caller(3) if ($caller[3] // '') eq '(eval)';
+
+    if (not $response->{success}) {
+        WebService::BambooHR::Exception->throw({
+            method      => $caller[3] // $method,
+            message     => "request to API failed",
+            code        => $response->{status},
+            reason      => $response->{reason},
+            filename    => $caller[1] // '(unknown)',
+            line_number => $caller[2] // 0,
+        });
+    }
+    return $response;
+}
+
+sub _delete { my ($self, $url) = @_; return $self->_request('DELETE', $url); }
+
+sub _post_json
+{
+    my ($self, $url, $data) = @_;
+    my $body = ref($data) ? JSON::MaybeXS::encode_json($data) : $data;
+    return $self->_request('POST', $url, $body, { 'Content-Type' => 'application/json' });
+}
 
 sub _get
 {
@@ -177,6 +227,8 @@ sub _check_fields
     my $self        = shift;
     my @field_names = @_;
     my @caller      = caller(1);
+    my $custom      = $self->custom_fields;
+    my %custom_id   = map { $_ => 1 } values %$custom;
     my @mapped_names;
 
     FIELD:
@@ -188,6 +240,14 @@ sub _check_fields
         }
         elsif (exists($field_alias{$field_name})) {
             push(@mapped_names, $field_alias{ $field_name });
+            next FIELD;
+        }
+        elsif (exists($custom->{$field_name})) {         # logical name
+            push(@mapped_names, $custom->{ $field_name });
+            next FIELD;
+        }
+        elsif ($custom_id{$field_name}) {                # configured id, used directly
+            push(@mapped_names, $field_name);
             next FIELD;
         }
 
@@ -210,11 +270,14 @@ sub _employee_record
     my $self      = shift;
     my $field_ref = shift;
     my %mapped_field;
-    my $mapped_name;
     local $_;
 
+    # Upstream declared $mapped_name outside this loop and only assigned it for
+    # aliased fields, so every other field was written under a stale/undef id.
     foreach my $field_name (keys %$field_ref) {
-        $mapped_name = $field_alias{$field_name} if exists($field_alias{$field_name});
+        my $mapped_name = $field_alias{$field_name}
+                       // $self->custom_fields->{$field_name}
+                       // $field_name;
         $mapped_field{$mapped_name} = $field_ref->{ $field_name };
     }
 
@@ -229,7 +292,9 @@ sub _employee_record
 
 sub _field_list
 {
-    return keys %field;
+    my $self = shift;
+    my %seen;
+    return grep { !$seen{$_}++ } (keys %field, values %{ $self->custom_fields });
 }
 
 1;
