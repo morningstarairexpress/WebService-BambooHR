@@ -10,6 +10,8 @@ is exercised by a test against an invented fixture (`t/data/README.md`). Items m
   * `id` is a JSON number for ordinary fields and a JSON **string** for sub-fields such as `"1234.6"`. Normalise to strings.
   * **Display names are not unique** within an account (two fields can both be `Hire Date`), and **some aliases are shared**.
   * Display names can carry stray whitespace (a trailing space, doubled interior spaces). Two names can differ only in whitespace.
+  * **One id can be listed more than once**, with a different name and alias each time (seen where a field was renamed). A reader that keys by id
+    silently loses all but one of them.
   * A custom table's columns are also listed here, but **usually without their alias**.
 * **`GET /v1/meta/tables`**: an array of `{alias, fields: [{id, name, alias, type}]}`.
   * There is **no display name for a table**: identify tables by alias.

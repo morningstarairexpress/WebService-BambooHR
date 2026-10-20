@@ -205,5 +205,35 @@
   "id": 9222,
   "name": "Effective Date",
   "type": "date"
+ },
+ {
+  "id": 9013,
+  "name": "Nickname",
+  "type": "text",
+  "alias": "nickname"
+ },
+ {
+  "id": 9013,
+  "name": "Preferred Name",
+  "type": "text",
+  "alias": "preferredName"
+ },
+ {
+  "id": 9014,
+  "name": "Work Status",
+  "type": "status",
+  "alias": "workStatus"
+ },
+ {
+  "id": 9014,
+  "name": "Status",
+  "type": "status",
+  "alias": "status"
+ },
+ {
+  "id": 9015,
+  "name": "Work Status",
+  "type": "list",
+  "alias": "workStatusHistory"
  }
 ]

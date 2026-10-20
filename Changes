@@ -12,6 +12,9 @@ Unreleased
  - New modules for custom tables and metadata: FieldRegistry (labels -> ids and
    aliases), MappingValidator, TabularData, TableRow, ListOptions, and the
    exceptions FieldNotFound, TableNotFound, DeprecatedField, AmbiguousField.
+ - FieldRegistry: /meta/fields may list one id more than once (a renamed field). The entries are now merged, so every
+   name and alias resolves to that id; before, all but the last were silently dropped. Lookup records gain `names` and
+   `aliases`, and `keys` includes every alias.
  - See docs/api-notes.md for the API behaviour these modules are built around.
 
 0.07 2016-03-05 NEILB

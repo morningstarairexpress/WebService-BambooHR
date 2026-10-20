@@ -120,4 +120,37 @@ isa_ok( err { $r->lookup_field('Retired Field') }, 'WebService::BambooHR::Except
     my $x = reg($m);
     isa_ok( err { $x->lookup_field('Old') }, 'WebService::BambooHR::Exception::DeprecatedField', 'deprecated field' );
     is( $x->resolve_field('New'), '2', 'non-deprecated resolves' ); }
+
+# ===== one id listed more than once (a renamed field): nothing is dropped ===================================================
+{   my $a = $r->lookup_field('nickname');
+    my $b = $r->lookup_field('preferredName');
+    is( $a->{id}, '9013', 'first listed alias resolves' );
+    is( $b->{id}, '9013', 'second listed alias resolves to the same id' );
+    is( $r->lookup_field('Nickname')->{id}, '9013', 'first listed display name resolves' );
+    is( $r->lookup_field('preferred name')->{id}, '9013', 'second listed display name resolves, case-insensitively' );
+    is( $a->{name}, 'Nickname', 'primary name is the first listed' );
+    is( $a->{alias}, 'nickname', 'primary alias is the first listed' );
+    is_deeply( $a->{names}, [ 'Nickname', 'Preferred Name' ], 'every name is kept' );
+    is_deeply( $a->{aliases}, [ 'nickname', 'preferredName' ], 'every alias is kept' );
+    is_deeply( $a->{keys}, [ '9013', 'nickname', 'preferredName' ], 'keys cover every alias, so employee_value finds the value under either' );
+    is_deeply( $r->lookup_field('9013'), $a, 'lookup by id gives the same record' );
+    isa_ok( err { $r->lookup_field('Work Status') }, 'WebService::BambooHR::Exception::AmbiguousField',
+            'a display name shared with a DIFFERENT id is still ambiguous after merging' );
+    is( $r->lookup_field('Status')->{id}, '9014', 'the other name of the renamed field resolves uniquely' );
+    my $e = err { $r->lookup_field('Work Status') };
+    is_deeply( [ sort map { $_->{id} } @{ $e->candidates } ], [ 9014, 9015 ], 'the ambiguity lists each id once, not once per entry' );
+    my $m = mock(); my $x = reg($m);
+    my $dead = Test::MockBambooHR->new; my $path = "$dir/dupid.json";
+    WebService::BambooHR::FieldRegistry->new( user_agent => $m, cache_path => $path )->load;
+    my $c = WebService::BambooHR::FieldRegistry->new( user_agent => $dead, cache_path => $path )->load;
+    is( $c->lookup_field('nickname')->{id}, '9013', 'a duplicate-id entry survives the cache round-trip' );
+    is( scalar @{ $dead->calls }, 0, '...without refetching' ); }
+
+# a field is deprecated only if EVERY entry for its id is
+{   my $m = Test::MockBambooHR->new
+        ->stub_get( 'meta/fields', { content => '[{"id":5,"name":"Old","type":"text","alias":"oldA","deprecated":true},{"id":5,"name":"Older","type":"text","alias":"oldB","deprecated":true},{"id":6,"name":"Half","type":"text","alias":"halfA","deprecated":true},{"id":6,"name":"Half Live","type":"text","alias":"halfB"}]' } )
+        ->stub_get( 'meta/tables', { content => '[]' } );
+    my $x = reg($m);
+    isa_ok( err { $x->lookup_field('oldB') }, 'WebService::BambooHR::Exception::DeprecatedField', 'all entries deprecated: deprecated' );
+    is( $x->lookup_field('halfA')->{id}, '6', 'only one of two entries deprecated: still usable' ); }
 done_testing;
