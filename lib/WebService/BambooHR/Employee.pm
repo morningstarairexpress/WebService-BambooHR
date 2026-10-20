@@ -118,7 +118,9 @@ sub custom
     my ($self, $name) = @_;
     my $id = $self->_custom_map->{$name} // $name;
     return $self->$id() if $self->can($id);      # logical name mapped onto a standard field
-    return $self->extra->{$id};
+    # The value may sit under the id, or under the key BambooHR chose (an alias). When a logical name is the same string as that
+    # alias, mapping it to the id would otherwise hide the value stored under the alias.
+    return $self->extra->{$id} // $self->extra->{$name};
 }
 
 1;

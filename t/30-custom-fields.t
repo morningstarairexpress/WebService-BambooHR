@@ -99,4 +99,12 @@ sub via_method { $_[0]->_get('meta/fields') }     # upstream's _get reads caller
     like( $xml, qr/<field id="9001">M<\/field>/,          'logical custom name -> id' );
     like( $xml, qr/<field id="1610">Yes<\/field>/,          'upstream alias still mapped' );
     unlike( $xml, qr/id=""/, 'no empty field ids' ); is( scalar @w, 0, 'no warnings' ); }
+
+# --- a logical name that is the same string as the alias BambooHR returns the value under -------------------------------------
+{   my ($b,$ua) = client( custom_fields => { hiredOn => '9050', otherName => '9051' } );
+    $ua->route( GET => qr{/employees/7\?fields=}, { content => '{"id":"7","firstName":"A","lastName":"B","hiredOn":"2012-05-05","9051":"x"}' } );
+    my $e = $b->employee( 7, 'firstName', 'hiredOn', 'otherName' );
+    is( $e->custom('hiredOn'), '2012-05-05', 'logical name equal to the alias: the value stored under the alias is found' );
+    is( $e->custom('otherName'), 'x', 'a logical name that differs from the alias still resolves through its id' );
+    is( $e->custom('nothing'), undef, 'an unknown key is undef' ); }
 done_testing;

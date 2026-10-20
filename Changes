@@ -15,6 +15,8 @@ Unreleased
  - FieldRegistry: /meta/fields may list one id more than once (a renamed field). The entries are now merged, so every
    name and alias resolves to that id; before, all but the last were silently dropped. Lookup records gain `names` and
    `aliases`, and `keys` includes every alias.
+ - Employee->custom(): a logical name that is the same string as the alias BambooHR returns the value under no longer hides
+   that value (the lookup also tries the raw key).
  - See docs/api-notes.md for the API behaviour these modules are built around.
 
 0.07 2016-03-05 NEILB
